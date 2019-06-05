@@ -1,7 +1,7 @@
 provider "google" {
   # project = "{{YOUR GCP PROJECT}}"
-  region  = "us-central1"
-  zone    = "us-central1-c"
+  region = "us-central1"
+  zone   = "us-central1-c"
 }
 
 resource "google_compute_instance" "vm_instance" {
@@ -21,8 +21,7 @@ resource "google_compute_instance" "vm_instance" {
   network_interface {
     # A default network is created for all GCP projects
     network       = "${google_compute_network.vpc_network.self_link}"
-    access_config = {
-    }
+    access_config = {}
   }
 }
 
@@ -32,5 +31,5 @@ resource "google_compute_network" "vpc_network" {
 }
 
 output "network_ip" {
-    value = "${google_compute_instance.vm_instance.network_interface.0.network_ip}"
+  value = "${google_compute_instance.vm_instance.network_interface.0.network_ip}"
 }
