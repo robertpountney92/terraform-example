@@ -24,16 +24,16 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-module "use_case" {
-	source = "./use_case"
-	ami 										= "${var.ami}"
-	instance_type 					= "${var.instance_type}"
+module "instances-additional-volumes" {
+	source = "./modules/instances-additional-volumes"
+	ami 				    = "${var.ami}"
+	instance_type 			= "${var.instance_type}"
 	subnet_id              	= "${var.subnet_id}"
-  vpc_security_group_id 	= "${var.vpc_security_group_id}"
-  Identity 								= "${var.Identity}"	
-	volume									= "${var.volume}"
-	region									= "${var.region}"
-	availability_zone				= "${var.availability_zone}"
+	vpc_security_group_id 	= "${var.vpc_security_group_id}"
+	Identity 				= "${var.Identity}"	
+	volume					= "${var.volume}"
+	region					= "${var.region}"
+	availability_zone		= "${var.availability_zone}"
 }
 
 output "public_ip" {
